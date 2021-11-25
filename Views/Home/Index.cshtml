@@ -1,0 +1,20 @@
+﻿@{
+    ViewData["Title"] = "Group Admin Demo";
+}
+   <p>Register, login then create a group , Register some members login and add members to your groups</p>
+<a class="btn btn-sm btn-primary" asp-area="" asp-controller="DGroups"  asp-action="" >Manage Groups</a>
+
+<div class="text-center">
+    <p>.Net 6 Core Visual Studio Community 2022 RC (64-bit) using Identity individual accounts </p>
+    <h4 class="display-4"> Group Admin Demo....Allows</h4>
+    <p>Anyone to register as a Member</p>
+    <p>A logged in Member to create multiple groups (Member then becomes Admin of the groups)</p>
+    <p>Admin to add registed Members to groups </p>
+    <p>Admin to alter Roles of Members in Groups</p>
+    <p>Members to have multiple roles in multiple groups i.e 'admin' in one group, 'edit'  in another</p>
+    <p>Does not use dotnet roles and policies </p>
+    <p>Uses database cascade delete related records i.e.</p>
+    <p>Delete a group all memberships of the group are deleted.</p>
+    <p>Delete a Member from one or more groups.</p>
+</div>
+

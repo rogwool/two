@@ -1,0 +1,72 @@
+﻿@model two.Models.GroupMember
+@using two.Models;
+@{
+    ViewData["Title"] = "Edit Member group role";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Edit Member group role</h1>
+
+<h4>GroupMember</h4>
+<hr />
+<dt class="col-sm-2">
+    @Html.DisplayNameFor(model => model.DGroup.GroupName)
+</dt>
+<dd class="col-sm-10">
+    @Html.DisplayFor(model => model.DGroup.GroupName)
+</dd>
+<dt class="col-sm-2">
+    @Html.DisplayNameFor(model => model.ApplicationUser.Email)
+</dt>
+<dd class="col-sm-10">
+    @Html.DisplayFor(model => model.ApplicationUser.Email)
+</dd>
+<div class="row">
+    <div class="col-md-4">
+
+        <form asp-action="EditMemberRole">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <input type="hidden" asp-for="DGroupId" />
+
+            <div class="form-group">
+                <label asp-for="DGroup.GroupName" class="control-label"></label>
+                <input asp-for="DGroup.GroupName" class="form-control" />
+                <span asp-validation-for="DGroup.GroupName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ApplicationUser.Email" class="control-label"></label>
+                <input asp-for="ApplicationUser.Email" class="form-control" />
+                <span asp-validation-for="ApplicationUser.Email" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group">
+                <label asp-for="GroupRoleEz" class="control-label">Member Role</label>
+
+                <select asp-for="GroupRoleEz" asp-items="Html.GetEnumSelectList<GroupRoleEz>()" class="form-control">
+                    <option selected="selected" value="">Please select</option>
+                </select>
+                <span asp-validation-for="GroupRoleEz" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="EnrollmentDate" class="control-label"></label>
+                <input asp-for="EnrollmentDate" class="form-control" disabled/>
+                <span asp-validation-for="EnrollmentDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EnrollmentByUserId" class="control-label"></label>
+                <input asp-for="EnrollmentByUserId" class="form-control" disabled/>
+                <span asp-validation-for="EnrollmentByUserId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-controller="DGroups" asp-action="Index">Back to My Groups</a>
+</div>
+

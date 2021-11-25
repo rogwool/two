@@ -1,0 +1,75 @@
+﻿@model two.Models.GroupMember;
+
+@{
+    ViewData["Title"] = "Add a Member to a Group";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Add a Member to one of your Groups</h1>
+
+<h4>GroupMember</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="AddMemberToGroup">
+
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Id" class="control-label"></label>
+                <select asp-for="Id" class="form-control" asp-items="ViewBag.UserId"></select>`
+            </div>
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            @* <div class="form-group">
+            <label asp-for="DGroupId" class="control-label"></label>
+            <select asp-for="DGroupId" class="form-control" asp-items="ViewBag.DGroupIdX">
+                <option value="1">Select a Group</option>
+            </select>
+
+        </div>*@
+            @*cast
+            @foreach (var GM in (IEnumerable<SelectListItem>)ViewData["DGroupIdX"])
+            {
+                <tr>
+                    <td>@GM.Text</td>
+                    <td>@GM.Value</td>
+                    <td>@GM.Group</td>
+                    <td>@GM.Selected</td>
+                </tr>
+            }
+        **@
+
+            <select class="form-control" asp-for="DGroupId" asp-items="ViewBag.DGroupIdX">
+                <option value="GroupName">Pick One Group</option>
+            </select>
+
+            <div class="form-group">
+                <label asp-for="GroupRoleEz" class="control-label">Select Member Role</label>
+
+                <select asp-for="GroupRoleEz" asp-items="Html.GetEnumSelectList<GroupRoleEz>()" class="form-control">
+                    <option selected="selected" value="">Please select</option>
+                </select>
+                <span asp-validation-for="GroupRoleEz" class="text-danger"></span>
+            </div>
+            @* set in controller
+        <div class="form-group">
+            <label asp-for="EnrollmentDate" class="control-label"></label>
+            <input asp-for="EnrollmentDate" class="form-control" />
+            <span asp-validation-for="EnrollmentDate" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="EnrollmentByUserId" class="control-label"></label>
+            <input asp-for="EnrollmentByUserId" class="form-control" />
+            <span asp-validation-for="EnrollmentByUserId" class="text-danger"></span>
+        </div>
+            *@
+            <div class="form-group">
+                <input type="submit" value="Save Member to Group" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-controller="DGroups" asp-action="Index">Back to My Groups</a>
+</div>
+

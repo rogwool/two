@@ -1,0 +1,64 @@
+﻿@model IEnumerable<two.Models.GroupMember>
+
+@{
+    ViewData["Title"] = "Add Member to a Group";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Manage My Group Members</h1>
+
+<p>
+    <a asp-action="AddMemberToGroup" class="btn btn-sm btn-primary">Add Member to a Group</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @*Html.DisplayNameFor(model => model.DGroup)*@Group Name
+            </th>
+            <th>
+                @*Html.DisplayNameFor(model => model.GroupRoleEz)*@Role
+            </th>
+           <th>
+                @Html.DisplayNameFor(model => model.EnrollmentDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EnrollmentByUserId)
+            </th>
+            
+            <th>
+                @Html.DisplayNameFor(model => model.ApplicationUser.Email)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.DGroup.GroupName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GroupRoleEz)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EnrollmentDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EnrollmentByUserId)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.ApplicationUser.Email)
+            </td>
+            <td>
+                @*
+                <a asp-action="AddMemberToGroup" class="btn btn-sm btn-primary">Add Member to Group</a>*@
+                <a asp-action="EditMemberRole" asp-route-id="@item.ApplicationUser.Id" asp-route-DGroupId="@item.DGroupId" class="btn btn-sm btn-primary">Edit Member Role</a> |
+                <a asp-action="Details" asp-route-id="@item.ApplicationUser.Id" asp-route-DGroupId="@item.DGroupId" class="btn btn-sm btn-primary">Member Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.ApplicationUser.Id" asp-route-DGroupId="@item.DGroupId" class="btn btn-sm btn-primary">Delete Member from group</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

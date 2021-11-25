@@ -1,0 +1,50 @@
+﻿@model IEnumerable<two.Models.DGroup>
+
+@{
+    ViewData["Title"] = "My Groups";
+}
+
+<h1>My Groups</h1>
+
+<p>
+    <a asp-action="Create"  class="btn btn-sm btn-primary" >Create a New Group</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.GroupName)
+            </th>
+            <th> 
+                @Html.DisplayNameFor(model => model.CreatedByUserId)     
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreateDate)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.GroupName)
+            </td>
+            <th> 
+                @Html.DisplayFor(modelItem => item.CreatedByUserId)     
+            </th>
+            <th>
+                @Html.DisplayFor(modelItem => item.CreateDate)
+            </th>
+            <td>
+
+                <a asp-action="Edit" asp-route-id="@item.DGroupId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.DGroupId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.DGroupId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+
+</table>
+  <a asp-controller="GroupMembers" asp-action="Index" class="btn btn-sm btn-primary" >Manage Members</a> |
+  

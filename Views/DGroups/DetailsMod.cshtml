@@ -1,0 +1,66 @@
+﻿@model two.Models.DGroup
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+
+<h4>Group Details</h4>
+            <p> @Html.DisplayFor(model => model.GroupName)</p>
+            <p> @Html.DisplayFor(model => model.CreatedByUserId)</p>
+            <p> @Html.DisplayFor(model => model.CreateDate)</p>
+
+<hr />
+@if (Model.GroupMember.Any())
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    Email
+                </th>
+                <th>
+                    Group Role
+                </th>
+                <th>
+                     Enrolled By UserId
+                </th>
+                <th>
+                    Enrollment Date
+                </th>
+            </tr>
+        </thead>
+        <a asp-controller="GroupMembers" asp-action="AddMemberToGroup" asp-route-DGroupId="@Model.DGroupId">Add a signed up user to Group</a>
+        <p>Members </p>
+        <tbody>
+            @foreach (var item in Model.GroupMember)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ApplicationUser.Email)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.GroupRoleEz)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EnrollmentByUserId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EnrollmentDate)
+                    </td>
+
+                </tr>
+
+            }
+        </tbody>
+    </table>
+}
+
+
+
+
+<div>
+    <a asp-controller="DGroups" asp-action="Index">Back to My Groups</a>
+</div>
