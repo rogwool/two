@@ -10,3 +10,5 @@ Admin to add registed Members to groups
 Admin to alter Roles of Members in Groups
 
 Members to have multiple roles in multiple groups i.e 'admin' in one group, 'edit' in another
+
+Bindings need to be fixed
