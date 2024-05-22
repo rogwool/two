@@ -1,9 +1,9 @@
-MVC   .Net 6 Core Visual Studio Community 2022 RC (64-bit) using Identity individual accounts
+0MVC   .Net 6 Core Visual Studio Community 2022 RC (64-bit) using Identity individual accounts
 http://roger123-001-site1.ctempurl.com/
 Group Admin test....Allows
 Anyone to register as a Member
 
-A logged in Member to create multiple groups (Member then becomes Admin of the groups)
+A logged in Member to create multiple groups Member then becomes Admin of any groups they create.
 
 Admin to add registed Members to groups
 
